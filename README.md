@@ -1,2 +1,3 @@
 # paygo
-Paymnt Processing in Golang
+
+Payment Processing in Golang
