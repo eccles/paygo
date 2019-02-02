@@ -1,5 +1,16 @@
 FROM golang:1.11-alpine
 
+ARG GROUP_ID
+ARG USER_ID
+
+ENV GROUP_ID=${GROUP_ID}
+ENV USER_ID=${USER_ID}
+
+RUN addgroup -g ${GROUP_ID} builder \
+  && adduser -h /usr/src/app -G builder -D -H -u ${USER_ID} builder
+
 ADD . /src
 
 WORKDIR /src
+
+USER ${USER_ID}

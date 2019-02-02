@@ -1,2 +1,5 @@
+# docker environment
+.env
+
 # build artifacts
 .*_container

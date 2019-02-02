@@ -16,7 +16,7 @@ all: remove_containers clean artifacts
 # `make clean` cleans all build artifacts from container
 #
 .PHONY: clean
-clean:
+clean: remove_containers
 	./buildscripts/clean.sh
 
 #------------------------------------------------------------------------------
@@ -72,6 +72,9 @@ artifacts: functest
 remove_containers:
 	./buildscripts/remove_containers.sh
 
+.env:
+	./buildscripts/env.sh
+
 .PHONY: remove_builder
 remove_builder:
 	./buildscripts/remove_container.sh builder
@@ -83,6 +86,6 @@ start_builder: builder
 .PHONY: builder
 builder: .builder_container
 
-.builder_container: Dockerfile-builder docker-compose.yaml
+.builder_container: .env Dockerfile-builder docker-compose.yaml
 	./buildscripts/create_container.sh builder
 

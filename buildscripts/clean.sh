@@ -4,7 +4,4 @@
 #
 . ./buildscripts/name
 
-rm -rf bin/ \
-       htmlcov/ \
-       pkg/ \
-       pkg-build/
+rm -rf .env
