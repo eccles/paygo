@@ -1,0 +1,13 @@
+# 
+# Sourced
+. ./buildscripts/docker-check
+. ./buildscripts/name
+
+# BUILDID is set in CI environment
+export PREFIX=${NAME}${BUILDID}
+
+export DOCKER_COMPOSE="docker-compose -p ${PREFIX}"
+export DOCKER="${DOCKER_COMPOSE} -f docker-compose.yaml"
+
+export BUILDER="${DOCKER} exec -T builder"
+log "BUILDER=${BUILDER}"

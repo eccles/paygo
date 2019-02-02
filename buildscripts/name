@@ -1,0 +1,8 @@
+#
+# Sourced 
+. ./buildscripts/log
+
+export NAME=$( cat name )
+
+log "NAME=${NAME}"
+
