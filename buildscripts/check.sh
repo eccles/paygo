@@ -2,6 +2,11 @@
 # 
 # Statically check the code
 #
-. ./buildscripts/dc
+. ./buildscripts/name
 
-${BUILDER} go version
+for f in `find src/${NAME} -path src/${NAME}/vendor -prune -o -name '*.go' -print`
+do
+	go fmt $f
+	golint $f
+	go tool vet $f
+done

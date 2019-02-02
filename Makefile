@@ -24,8 +24,8 @@ clean: remove_containers
 # `$ make dependencies`
 #
 .PHONY: dependencies
-dependencies: clean start_builder
-	./buildscripts/dependencies.sh
+dependencies: start_builder
+	./buildscripts/dc_dependencies.sh
 
 #------------------------------------------------------------------------------
 #
@@ -33,7 +33,7 @@ dependencies: clean start_builder
 #
 .PHONY: check
 check: dependencies
-	./buildscripts/check.sh
+	./buildscripts/dc_check.sh
 
 #------------------------------------------------------------------------------
 #
@@ -41,7 +41,7 @@ check: dependencies
 #
 .PHONY: compile
 compile: check
-	./buildscripts/compile.sh
+	./buildscripts/dc_compile.sh
 
 #------------------------------------------------------------------------------
 #
@@ -49,7 +49,7 @@ compile: check
 #
 .PHONY: unittest
 unittest: compile
-	./buildscripts/unittest.sh
+	./buildscripts/dc_unittest.sh
 
 #------------------------------------------------------------------------------
 #
@@ -57,7 +57,7 @@ unittest: compile
 #
 .PHONY: functest
 functest: unittest
-	./buildscripts/functest.sh
+	./buildscripts/dc_functest.sh
 
 #------------------------------------------------------------------------------
 #
@@ -66,14 +66,22 @@ artifacts: functest
 
 #------------------------------------------------------------------------------
 #
+# `$ make shell`
+#
+.PHONY: shell
+shell: start_builder
+	./buildscripts/dc_shell.sh
+
+#------------------------------------------------------------------------------
+#
 # docker dependencies
 #
-.PHONY: remove_containers
-remove_containers:
-	./buildscripts/remove_containers.sh
-
 .env:
 	./buildscripts/env.sh
+
+.PHONY: remove_containers
+remove_containers: .env
+	./buildscripts/remove_containers.sh
 
 .PHONY: remove_builder
 remove_builder:

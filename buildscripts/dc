@@ -4,10 +4,14 @@
 . ./buildscripts/name
 
 # BUILDID is set in CI environment
-export PREFIX=${NAME}${BUILDID}
+if [ -z "${PREFIX}" ]
+then
+	export PREFIX=${NAME}${BUILDID}
 
-export DOCKER_COMPOSE="docker-compose -p ${PREFIX}"
-export DOCKER="${DOCKER_COMPOSE} -f docker-compose.yaml"
+	export DOCKER_COMPOSE="docker-compose -p ${PREFIX}"
+	export DOCKER="${DOCKER_COMPOSE} -f docker-compose.yaml"
 
-export BUILDER="${DOCKER} exec -T builder"
-log "BUILDER=${BUILDER}"
+	export SHELL="${DOCKER} exec builder /bin/sh"
+	export BUILDER="${DOCKER} exec -T builder"
+	log "BUILDER=${BUILDER}"
+fi

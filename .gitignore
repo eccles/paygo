@@ -3,3 +3,9 @@
 
 # build artifacts
 .*_container
+
+# go build artifacts
+.cache/
+bin/
+pkg/
+.ash_history

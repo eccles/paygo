@@ -2,6 +2,12 @@
 # 
 # Compile all the code
 #
-. ./buildscripts/dc
+. ./buildscripts/name
 
-${BUILDER} go version
+for m in `find src/${NAME} -path src/${NAME}/vendor -prune -o -name main.go -print`
+do
+	d=$( dirname $m )
+	b=$( basename $d )
+	p=$( echo $d | cut -d'/' -f2- )
+	go build -o bin/${NAME}${b} ${p}
+done

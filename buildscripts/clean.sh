@@ -4,4 +4,10 @@
 #
 . ./buildscripts/name
 
-rm -rf .env
+rm -rf .cache/ \
+	bin/ \
+	.env \
+	pkg/ \
+	src/${NAME}/Gopkg.lock \
+	src/${NAME}/Gopkg.toml \
+	src/${NAME}/vendor

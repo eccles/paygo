@@ -2,7 +2,9 @@
 # Sourced 
 . ./buildscripts/log
 
-export NAME=$( cat name )
-
-log "NAME=${NAME}"
+if [ -z "${NAME}" ]
+then
+	export NAME=$( cat name )
+	log "NAME=${NAME}"
+fi
 

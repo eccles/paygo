@@ -2,15 +2,21 @@ FROM golang:1.11-alpine
 
 ARG GROUP_ID
 ARG USER_ID
+ARG WORKDIR=/app
 
 ENV GROUP_ID=${GROUP_ID}
 ENV USER_ID=${USER_ID}
 
 RUN addgroup -g ${GROUP_ID} builder \
-  && adduser -h /usr/src/app -G builder -D -H -u ${USER_ID} builder
+  && adduser -h ${WORKDIR} -G builder -D -H -u ${USER_ID} builder
 
-ADD . /src
+RUN apk update && apk upgrade \
+  && apk add --no-cache git \
+  && go get -u golang.org/x/lint/golint \
+  && go get -u -v github.com/golang/dep/cmd/dep
 
-WORKDIR /src
+USER builder
 
-USER ${USER_ID}
+ENV GOPATH="/go:${WORKDIR}"
+
+WORKDIR ${WORKDIR}
