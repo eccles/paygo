@@ -1,0 +1,13 @@
+---
+version: '3.4'
+
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile-builder
+    command: tail -f /dev/null
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/src
