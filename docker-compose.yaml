@@ -11,7 +11,14 @@ services:
         - USER_ID
         - WORKDIR
     command: tail -f /dev/null
-    tty: true
     stdin_open: true
+    tty: true
     volumes:
       - .:${WORKDIR}
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-api
+    stdin_open: true
+    tty: true
+    user: ${USER_ID}:${GROUP_ID}

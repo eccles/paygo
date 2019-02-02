@@ -9,5 +9,5 @@ do
 	d=$( dirname $m )
 	b=$( basename $d )
 	p=$( echo $d | cut -d'/' -f2- )
-	go build -o bin/${NAME}${b} ${p}
+	CGO_ENABLED=0 go build -o bin/${NAME}${b} ${p}
 done

@@ -56,7 +56,7 @@ unittest: compile
 # `$ make functest` functional test using binaries
 #
 .PHONY: functest
-functest: unittest
+functest: unittest api
 	./buildscripts/dc_functest.sh
 
 #------------------------------------------------------------------------------
@@ -82,6 +82,16 @@ shell: start_builder
 .PHONY: remove_containers
 remove_containers: .env
 	./buildscripts/remove_containers.sh
+
+.PHONY: remove_api
+remove_api:
+	./buildscripts/remove_container.sh api
+
+.PHONY: api
+api: .api
+
+.api: Dockerfile-api docker-compose.yaml
+	./buildscripts/create_container.sh api
 
 .PHONY: remove_builder
 remove_builder:

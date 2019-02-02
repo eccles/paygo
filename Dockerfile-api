@@ -1,0 +1,7 @@
+FROM scratch
+
+WORKDIR /app
+
+COPY bin/paygocmd .
+
+CMD [ "./paygocmd" ]

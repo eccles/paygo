@@ -12,6 +12,7 @@ then
 	export DOCKER="${DOCKER_COMPOSE} -f docker-compose.yaml"
 
 	export SHELL="${DOCKER} exec builder /bin/sh"
+	export API="${DOCKER} run -T api"
 	export BUILDER="${DOCKER} exec -T builder"
 	log "BUILDER=${BUILDER}"
 fi

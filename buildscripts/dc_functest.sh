@@ -4,4 +4,4 @@
 #
 . ./buildscripts/dc
 
-${BUILDER} buildscripts/functest.sh
+${API}
