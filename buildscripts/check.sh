@@ -2,9 +2,9 @@
 # 
 # Statically check the code
 #
-. ./buildscripts/name
+. ./buildscripts/src
 
-for f in `find src/${NAME} -path src/${NAME}/vendor -prune -o -name '*.go' -print`
+for f in `find ${SRC} -path ${SRC}/vendor -prune -o -name '*.go' -print`
 do
 	go fmt $f
 	golint $f

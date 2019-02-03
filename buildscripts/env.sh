@@ -6,5 +6,5 @@ GROUP_ID=$( id -g )
 cat > .env << EOF
 USER_ID=${USER_ID}
 GROUP_ID=${GROUP_ID}
-WORKDIR=/app
+WORKDIR=/home/builder
 EOF

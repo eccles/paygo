@@ -2,9 +2,9 @@
 # 
 # Compile all the code
 #
-. ./buildscripts/name
+. ./buildscripts/src
 
-for m in `find src/${NAME} -path src/${NAME}/vendor -prune -o -name main.go -print`
+for m in `find ${SRC} -path ${SRC}/vendor -prune -o -name main.go -print`
 do
 	d=$( dirname $m )
 	b=$( basename $d )

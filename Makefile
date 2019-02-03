@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 .PHONY: all
-all: remove_containers clean artifacts
+all: artifacts
 
 #------------------------------------------------------------------------------
 #
@@ -76,7 +76,7 @@ shell: start_builder
 #
 # docker dependencies
 #
-.env:
+.env: buildscripts/env.sh
 	./buildscripts/env.sh
 
 .PHONY: remove_containers

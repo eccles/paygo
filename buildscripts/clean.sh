@@ -2,12 +2,12 @@
 # 
 # returns repo to pristine state
 #
-. ./buildscripts/name
+. ./buildscripts/src
 
 rm -rf .cache/ \
 	bin/ \
 	.env \
 	pkg/ \
-	src/${NAME}/Gopkg.lock \
-	src/${NAME}/Gopkg.toml \
-	src/${NAME}/vendor
+	${SRC}/Gopkg.lock \
+	${SRC}/Gopkg.toml \
+	${SRC}/vendor

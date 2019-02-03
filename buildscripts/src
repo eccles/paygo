@@ -1,0 +1,10 @@
+#
+# Sourced 
+. ./buildscripts/name
+
+if [ -z "${SRC}" ]
+then
+	export SRC=src/${NAME}
+	log "SRC=${SRC}"
+fi
+
