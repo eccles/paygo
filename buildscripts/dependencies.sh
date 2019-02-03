@@ -2,13 +2,7 @@
 # 
 # get dependencies
 #
-. ./buildscripts/src
-
-if [ ! -d ${SRC}/vendor \
-  -o ! -s ${SRC}/Gopkg.toml ]
+if [ ! -s go.mod ]
 then
-        rm -rf ${SRC}/Gopkg.*
-	(cd ${SRC} && dep init && dep ensure && dep status)
-else
-	(cd ${SRC} && dep ensure && dep status)
+	go mod init
 fi

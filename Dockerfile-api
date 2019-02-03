@@ -2,6 +2,6 @@ FROM scratch
 
 WORKDIR /app
 
-COPY bin/paygocmd .
+COPY bin/paygo .
 
-CMD [ "./paygocmd" ]
+CMD [ "./paygo" ]

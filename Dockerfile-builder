@@ -11,11 +11,10 @@ RUN addgroup -g ${GROUP_ID} builder \
   && adduser -h ${WORKDIR} -G builder -D -u ${USER_ID} builder
 
 RUN apk add --no-cache git \
-  && go get -u golang.org/x/lint/golint \
-  && go get -u -v github.com/golang/dep/cmd/dep
+  && go get -u golang.org/x/lint/golint
 
 USER builder
 
-ENV GOPATH="/go:${WORKDIR}"
+ENV GOPATH="/go"
 
 WORKDIR ${WORKDIR}
