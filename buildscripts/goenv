@@ -1,0 +1,10 @@
+#
+# Sourced 
+. ./buildscripts/log
+
+if [ -z "${CGO_ENABLED}" ]
+then
+	export CGO_ENABLED=0
+	log "CGO_ENABLED=${CGO_ENABLED}"
+fi
+

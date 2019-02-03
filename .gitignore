@@ -7,5 +7,6 @@
 # go build artifacts
 .cache/
 bin/
+htmlcov/
 pkg/
 .ash_history

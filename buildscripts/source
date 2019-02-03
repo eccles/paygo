@@ -1,0 +1,10 @@
+#
+# Sourced 
+. ./buildscripts/log
+
+if [ -z "${SOURCE}" ]
+then
+	export SOURCE=cmd/main.go
+	log "SOURCE=${SOURCE}"
+fi
+

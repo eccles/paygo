@@ -1,0 +1,10 @@
+#
+# Sourced 
+. ./buildscripts/log
+
+if [ -z "${TARGET}" ]
+then
+	export TARGET=bin/paygo
+	log "TARGET=${TARGET}"
+fi
+

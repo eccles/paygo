@@ -16,5 +16,6 @@ RUN apk add --no-cache git \
 USER builder
 
 ENV GOPATH="/go"
+ENV CGO_ENABLED=0
 
 WORKDIR ${WORKDIR}

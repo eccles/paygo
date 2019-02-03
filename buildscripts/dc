@@ -1,11 +1,18 @@
 # 
-# Sourced
+# Sourced outside container
 . ./buildscripts/docker-check
 . ./buildscripts/name
 
-# BUILDID is set in CI environment
+if [ -z "${DESCRIBE}" ]
+then
+	export DESCRIBE=$( git describe --always --long --dirty)
+	log "DESCRIBE=${DESCRIBE}"
+
+fi
+
 if [ -z "${PREFIX}" ]
 then
+	# BUILDID is set in CI environment
 	export PREFIX=${NAME}${BUILDID}
 
 	export DOCKER_COMPOSE="docker-compose -p ${PREFIX}"

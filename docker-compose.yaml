@@ -11,6 +11,8 @@ services:
         - USER_ID
         - WORKDIR
     command: tail -f /dev/null
+    environment:
+        - DESCRIBE
     stdin_open: true
     tty: true
     volumes:
